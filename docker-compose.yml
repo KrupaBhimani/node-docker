@@ -1,0 +1,33 @@
+version: '3.7'
+
+services:
+  node:
+    image: node-test1
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "8080:8080"
+    networks:
+      net1:
+    depends_on:
+      - mongodb
+  
+  mongodb:
+    image: mongo
+    ports:
+      - "27017:27017"
+    networks:
+      net2:
+        aliases:
+          - mongo
+       
+
+networks:
+  net1: 
+  net2:
+    
+    
+      
+      
+    
